@@ -1,56 +1,61 @@
 <template>
-  <header class="header">
-    <img src="../assets/images/logo.svg" alt="Logotipo RM[App]" />
-    <nav>
-      <ul>
-        <li>
-          <RouterLink to="/">Home</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/personagens">Personagens</RouterLink>
-        </li>
-      </ul>
-    </nav>
+  <header>
+    <Container class="wrapper-header">
+      <img src="../assets/images/logo.svg" alt="Logotipo RM[App]" />
+      <nav>
+        <ul>
+          <li>
+            <RouterLink to="/">Home</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/personagens">Personagens</RouterLink>
+          </li>
+        </ul>
+      </nav>
+    </Container>
   </header>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Container from "./Container.vue";
+</script>
 
 <style lang="scss" scoped>
-.header {
+header {
   padding: 1rem 1rem;
   box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+  .wrapper-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    nav {
+      ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
 
-  nav {
-    ul {
-      list-style-type: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
+        li {
+          color: var(--gray-600);
 
-      li {
-        color: var(--gray-600);
+          a {
+            font-size: 1rem;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            padding: 0.2rem;
 
-        a {
-          font-size: 1rem;
-          text-decoration: none;
-          border-bottom: 1px solid transparent;
-          padding: 0.2rem;
+            &:hover {
+              color: var(--purple-500);
+              border-bottom: 1px solid var(--purple-500);
+            }
 
-          &:hover {
-            color: var(--purple-500);
-            border-bottom: 1px solid var(--purple-500);
-          }
-
-          &.router-link-active {
-            color: var(--purple-500);
-            font-weight: bold;
-            border-bottom: 1px solid var(--purple-500);
+            &.router-link-active {
+              color: var(--purple-500);
+              font-weight: bold;
+              border-bottom: 1px solid var(--purple-500);
+            }
           }
         }
       }
