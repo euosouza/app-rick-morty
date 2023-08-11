@@ -2,7 +2,7 @@
   <header>
     <Container class="wrapper-header">
       <img src="../assets/images/logo.svg" alt="Logotipo RM[App]" />
-      <nav>
+      <!-- <nav>
         <ul>
           <li>
             <RouterLink to="/">Home</RouterLink>
@@ -11,13 +11,13 @@
             <RouterLink to="/personagens">Personagens</RouterLink>
           </li>
         </ul>
-      </nav>
+      </nav> -->
     </Container>
   </header>
 </template>
 
 <script setup lang="ts">
-import Container from "./Container.vue";
+import Container from "./ContainerItem.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -27,7 +27,7 @@ header {
   .wrapper-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     nav {
       ul {
@@ -54,7 +54,6 @@ header {
             &.router-link-active {
               color: var(--purple-500);
               font-weight: bold;
-              border-bottom: 1px solid var(--purple-500);
             }
           }
         }
