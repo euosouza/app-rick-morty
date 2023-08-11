@@ -1,9 +1,10 @@
 @use "sass:math";
 
+$mobile: 568px;
 $tablet: 768px;
 $desktop: 990px;
 
-$container: 1140px;
+$container: 1064px;
 
 $border-radius: 8px;
 $html-font-size: 16px;
@@ -16,4 +17,21 @@ $html-font-size: 16px;
 
 @function toRem($size) {
   @return math.div($size, $html-font-size) * 1rem;
+}
+
+@mixin section-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 2rem 1rem;
+
+  @include responsiveMin($tablet) {
+    padding: 4rem 1rem;
+
+    flex-direction: row;
+    gap: 4rem;
+  }
 }

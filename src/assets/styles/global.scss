@@ -1,3 +1,5 @@
+@import './utils.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -8,9 +10,12 @@ body, input, textarea, button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 1rem;
+  line-height: 1.2;
 }
 
 :root {
+  --white: #FFFFFF;
+
   --gray-100: #E1E1E6;
   --gray-300: #C4C4CC;
   --gray-400: #8D8D99;
@@ -25,4 +30,36 @@ body, input, textarea, button {
 
   --purple-500: #AD2A8D;
   --purple-600: #6C1264;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1rem;
+
+  border: none;
+  border-radius: 8px;
+
+  width: 100%;
+
+  background-color: var(--purple-500);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    
+    &:not(:disabled) {
+      background-color: var(--purple-600);
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;background-color:  var(--gray-300);
+  }
 }
