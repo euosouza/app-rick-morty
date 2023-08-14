@@ -7,57 +7,62 @@
     />
     <Container>
       <div class="wrapper-filtros">
-        <form class="container-form" @submit.prevent="handleSubmitSearch">
-          <input
-            v-model="form.name"
-            type="text"
-            placeholder="Digite sua pesquisa"
-          />
+        <form class="" @submit.prevent="handleSubmitSearch">
+          <div class="container-form">
+            <input
+              v-model="form.name"
+              type="text"
+              placeholder="Digite sua pesquisa"
+            />
 
-          <select input-status="select" v-model="form.status">
-            <option value="" selected disabled>Selecione um status</option>
-            <option value="alive">Alive</option>
-            <option value="dead">Dead</option>
-            <option value="unknown">Unknown</option>
-          </select>
+            <select input-status="select" v-model="form.status">
+              <option value="" selected disabled>Selecione um status</option>
+              <option value="alive">Alive</option>
+              <option value="dead">Dead</option>
+              <option value="unknown">Unknown</option>
+            </select>
 
-          <button
-            type="submit"
-            class="btn btn-seach"
-            :disabled="isDisabledButton"
-          >
-            <PhMagnifyingGlass size="16" />
-            <span>Pesquisar</span>
-          </button>
+            <button
+              type="submit"
+              class="btn btn-seach"
+              :disabled="isDisabledButton"
+            >
+              <PhMagnifyingGlass size="16" />
+              <span>Pesquisar</span>
+            </button>
+          </div>
+          <div class="text-info-search">
+            <p v-if="isDisabledButton">
+              Você precisa digitar o nome do personagem ou selecionar o status
+              para fazer a pesquisa
+            </p>
+          </div>
         </form>
-        <div class="text-info-search">
-          <p v-if="isDisabledButton">
-            Você precisa digitar o nome do personagem ou selecionar o status
-            para fazer a pesquisa
-          </p>
-        </div>
+
         <Pagination
           v-if="dataPersonagens?.info"
           :info="dataPersonagens.info"
           @next="handleNextPage"
           @prev="handlePrevPage"
         />
-        <div v-if="loadindPersonagens" class="loading">Carregando...</div>
-        <div v-else-if="errorPersonagens" class="loading">
-          {{ errorPersonagens }}
+
+        <div v-if="loadindPersonagens" class="list-itens">
+          <Skeleton /><Skeleton /><Skeleton /><Skeleton />
         </div>
+        <ErrorItem v-else-if="errorPersonagens" :error-msg="errorPersonagens" />
         <div v-else class="list-itens">
           <template v-for="personagem in personagens" :key="personagem.id">
             <Card :personagem="personagem" />
           </template>
         </div>
+
+        <Pagination
+          v-if="dataPersonagens?.info"
+          :info="dataPersonagens.info"
+          @next="handleNextPage"
+          @prev="handlePrevPage"
+        />
       </div>
-      <Pagination
-        v-if="dataPersonagens?.info"
-        :info="dataPersonagens.info"
-        @next="handleNextPage"
-        @prev="handlePrevPage"
-      />
     </Container>
   </section>
 </template>
@@ -70,6 +75,8 @@ import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import Container from "@/components/ContainerItem.vue";
 import Card from "@/components/CardItem.vue";
 import Pagination from "@/components/PaginationItem.vue";
+import Skeleton from "@/components/SkeletonItem.vue";
+import ErrorItem from "@/components/ErrorItem.vue";
 
 import { usePersonagensStore } from "@/stores/personagensStore";
 import { usePaginacaoStore } from "@/stores/paginacaoStore";
@@ -180,7 +187,11 @@ onMounted(async () => {
   }
 
   .wrapper-filtros {
-    form.container-form {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    .container-form {
       display: flex;
       align-items: stretch;
       justify-content: center;

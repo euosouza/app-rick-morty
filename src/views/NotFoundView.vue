@@ -6,7 +6,8 @@
         <p>Página não encontrada</p>
         <p>
           Essa página não está disponivel em nossa aplicação,
-          <a href="#">clique aqui</a> para voltar para á página principal.
+          <RouterLink to="/">clique aqui</RouterLink> para voltar para á página
+          principal.
         </p>
       </div>
     </div>
@@ -14,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import Container from "@/components/ContainerItem.vue";
 </script>
 

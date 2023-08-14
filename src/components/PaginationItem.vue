@@ -82,7 +82,6 @@ onMounted(() => {
   justify-content: flex-end;
   gap: 0.7rem;
   padding: 0.5rem;
-  margin: 2rem 0;
   border-radius: 8px;
   background-color: rgba($color: #e1e1e6, $alpha: 0.5);
 
