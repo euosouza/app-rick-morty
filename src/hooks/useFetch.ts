@@ -78,7 +78,8 @@ export function useFetch<T = unknown>() {
 
       data.value = await response.json();
     } catch (err) {
-      error.value = "Algum erro aconteceu ao buscar as informações na API.";
+      error.value =
+        "Algum erro aconteceu ao buscar as informações na API, tente mais tarde novamente!";
     } finally {
       loadind.value = false;
     }
